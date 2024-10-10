@@ -62,12 +62,25 @@
         case '/comment/delete':
             require 'includes/comment/delete.php';
             break;
+        //  Setup the action route for submit contact
+        case '/contact/submit':
+            require 'includes/contact/submit.php';
+            break;
+        case '/contact/delete':
+            require 'includes/contact/delete.php';
+            break;
         // Setup the action route for like/dislike
         case '/like':
         require 'includes/like/add.php';
         break;
 
         // pages
+        case '/contact':
+            require 'pages/contact.php';
+            break;
+        case '/reply':
+            require 'pages/reply.php';
+            break;
         case '/dashboard':
             require 'pages/dashboard.php';
             break;
@@ -76,6 +89,9 @@
             break;
         case '/login':
             require 'pages/login.php';
+            break;
+        case '/manage-contacts':
+            require 'pages/manage-contacts.php';
             break;
         case '/manage-posts-add':
             require 'pages/manage-posts-add.php';
