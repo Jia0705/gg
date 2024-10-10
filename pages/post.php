@@ -66,42 +66,40 @@ require "parts/header.php"; ?>
       </p>
     <?php endif; ?>
 
-    <!-- comments section -->
-    <div class="col">
-      <h3>Comments</h3>
-      <?php if (!empty($comments)) : ?>
-        <?php foreach ($comments as $comment) : ?>
-          <div class="mb-3 p-3 border rounded">
-            <strong><?=$comment['unknown']; ?></strong>
-            <p><?= nl2br($comment['comment']); ?></p>
-            <?php if (isset($_SESSION['user']) && $comment['user_id'] == $_SESSION['user']['id']) : ?>
-              <a href="/comment/edit?id=<?= $comment['id']; ?>&post_id=<?= $id; ?>" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
-              <a href="/comment/delete?id=<?= $comment['id']; ?>&post_id=<?= $id; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this comment?');"><i class="bi bi-trash"></i></a>
-            <?php endif; ?>
-          </div>
-        <?php endforeach; ?>
-      <?php else : ?>
-        <p>No comments yet. Be the first to comment!</p>
-      <?php endif; ?>
-
-      <!-- comment form -->
-      <?php if (isset($_SESSION['user'])) : ?>
-        <div class="mt-4">
-          <h4>Leave a Comment</h4>
-          <form method="POST" action="/comment/add">
-            <textarea class="form-control mb-3" name="comment" placeholder="Write your comment..." rows="3" required></textarea>
-            <input type="hidden" name="post_id" value="<?= $id; ?>">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+<!-- comments section -->
+<div class="col mt-4">
+    <h3>Comments</h3>
+    <?php if (!empty($comments)) : ?>
+        <div class="list-group">
+            <?php foreach ($comments as $comment) : ?>
+                <div class="list-group-item mb-3 p-3 border rounded">
+                    <strong><?= $comment['unknown']; ?></strong>
+                    <p><?= nl2br($comment['comment']); ?></p>
+                    <?php if (isset($_SESSION['user']) && $comment['user_id'] == $_SESSION['user']['id']) : ?>
+                        <div class="mt-2">
+                            <a href="/comment/edit?id=<?= $comment['id']; ?>&post_id=<?= $id; ?>" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
+                            <a href="/comment/delete?id=<?= $comment['id']; ?>&post_id=<?= $id; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this comment?');"><i class="bi bi-trash"></i></a>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
         </div>
-      <?php else : ?>
-        <p class="mt-4">Please <a href="/login">log in</a> to leave a comment.</p>
-      <?php endif; ?>
-    </div>
-  </div>
-  <div class="text-center mt-5">
-    <a href="/" class="btn btn-link btn-sm"><i class="bi bi-arrow-left"></i> Back</a>
-  </div>
-</div>
+    <?php else : ?>
+        <p>No comments yet. Be the first to comment!</p>
+    <?php endif; ?>
 
+    <!-- comment form -->
+    <?php if (isset($_SESSION['user'])) : ?>
+        <div class="mt-4">
+            <h4>Leave a Comment</h4>
+            <form method="POST" action="/comment/add">
+                <textarea class="form-control mb-3" name="comment" placeholder="Write your comment..." rows="3" required></textarea>
+                <input type="hidden" name="post_id" value="<?= $id; ?>">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    <?php else : ?>
+        <p class="mt-4">Please <a href="/login">log in</a> to leave a comment.</p>
+    <?php endif; ?>
+</div>
 <?php require 'parts/footer.php'; ?>
