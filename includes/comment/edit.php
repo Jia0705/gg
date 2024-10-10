@@ -72,6 +72,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
     </div>
+    <div class="text-center">
+        <a href="/dashboard" class="btn btn-link btn-sm"><i class="bi bi-arrow-left"></i> Back</a>
+    </div>
+</div>
 </div>
 
 <?php require 'parts/footer.php'; ?>

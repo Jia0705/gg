@@ -101,5 +101,9 @@ require "parts/header.php"; ?>
     <?php else : ?>
         <p class="mt-4">Please <a href="/login">log in</a> to leave a comment.</p>
     <?php endif; ?>
+    <div class="text-center">
+        <a href="/dashboard" class="btn btn-link btn-sm"><i class="bi bi-arrow-left"></i> Back to Dashboard</a>
+    </div>
+</div>
 </div>
 <?php require 'parts/footer.php'; ?>
