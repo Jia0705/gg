@@ -54,14 +54,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!-- comment Form -->
 <?php require 'parts/header.php'; ?>
+
 <div class="container my-5" style="max-width: 600px;">
-    <h1>Edit Comment</h1>
-    <form method="POST" action="">
-        <div class="mb-3">
-            <label for="comment" class="form-label">Edit Your Comment</label>
-            <textarea class="form-control" id="comment" name="comment" rows="3" required><?=$comment['comment']; ?></textarea>
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="h4 mb-0">Edit Your Comment</h2>
         </div>
-        <button type="submit" class="btn btn-primary">Update Comment</button>
-    </form>
+        <div class="card-body">
+            <form method="POST" action="">
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Your Comment</label>
+                    <textarea class="form-control" id="comment" name="comment" rows="4" required><?=$comment['comment']; ?></textarea>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
 <?php require 'parts/footer.php'; ?>
+
+
