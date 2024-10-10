@@ -75,8 +75,8 @@ require "parts/header.php"; ?>
             <strong><?=$comment['unknown']; ?></strong>
             <p><?= nl2br($comment['comment']); ?></p>
             <?php if (isset($_SESSION['user']) && $comment['user_id'] == $_SESSION['user']['id']) : ?>
-              <a href="/comment/edit?id=<?= $comment['id']; ?>&post_id=<?= $id; ?>" class="btn btn-sm btn-warning">Edit</a>
-              <a href="/comment/delete?id=<?= $comment['id']; ?>&post_id=<?= $id; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this comment?');">Delete</a>
+              <a href="/comment/edit?id=<?= $comment['id']; ?>&post_id=<?= $id; ?>" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
+              <a href="/comment/delete?id=<?= $comment['id']; ?>&post_id=<?= $id; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this comment?');"><i class="bi bi-trash"></i></a>
             <?php endif; ?>
           </div>
         <?php endforeach; ?>
